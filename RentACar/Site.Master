@@ -1,0 +1,194 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="RentACar.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - RentACar</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    
+    <style>
+        .flag-icon { margin-right: 5px; }
+        
+        body {
+            padding-top: 76px;
+        }
+        
+        .navbar {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 500;
+            font-size: 1.3rem;
+        }
+        
+        .nav-link {
+            font-weight: 400;
+            padding: 0.5rem 0.75rem;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            color: rgba(255,255,255,0.8) !important;
+        }
+        
+        .dropdown-menu {
+            border: 1px solid #e9ecef;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            padding: 0.25rem 0;
+            margin-top: 0.25rem;
+            min-width: 120px;
+        }
+        
+        .dropdown-item {
+            padding: 0.5rem 1rem;
+            font-weight: 400;
+            color: #495057;
+            transition: background-color 0.2s ease;
+            text-align: center;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+            color: #495057;
+        }
+        
+        .dropdown-item:active {
+            background-color: #e9ecef;
+        }
+        
+        @media (max-width: 991px) {
+            .navbar-nav {
+                padding: 0.5rem 0;
+            }
+            
+            .nav-link {
+                padding: 0.5rem 1rem;
+            }
+            
+            .dropdown-menu {
+                position: static !important;
+                transform: none !important;
+                box-shadow: none;
+                border: none;
+                margin: 0;
+                background-color: rgba(255,255,255,0.1);
+            }
+            
+            .dropdown-item {
+                padding: 0.5rem 1rem;
+                color: rgba(255,255,255,0.8);
+            }
+            
+            .dropdown-item:hover {
+                background-color: rgba(255,255,255,0.1);
+                color: white;
+            }
+        }
+        
+        .navbar-toggler {
+            border: none;
+            padding: 0.25rem 0.5rem;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        .main-content {
+            min-height: calc(100vh - 76px);
+        }
+    </style>
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server" />
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" runat="server" href="~/">RentACar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <asp:LoginView ID="LoginView2" runat="server" ViewStateMode="Disabled">
+                            <LoggedInTemplate>
+                                <li class="nav-item">
+                                    <a class="nav-link" runat="server" href="~/ReqCollection.aspx">
+                                        <asp:Literal runat="server" Text="<%$ Resources: Resource, CreateRequest %>" />
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" runat="server" href="~/ListCollection.aspx">
+                                        <asp:Literal runat="server" Text="<%$ Resources: Resource, ViewRequests %>" />
+                                    </a>
+                                </li>
+                            </LoggedInTemplate>
+                        </asp:LoginView>
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="flag-icon">🌐</span> <asp:Literal runat="server" Text="<%$ Resources: Resource, Language %>" />
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <asp:LinkButton ID="lnkEnglish" runat="server" CssClass="dropdown-item" OnClick="SetLanguage_Click" CommandArgument="en" Text="English" />
+                                </li>
+                                <li>
+                                    <asp:LinkButton ID="lnkTurlish" runat="server" CssClass="dropdown-item" OnClick="SetLanguage_Click" CommandArgument="tr-TR" Text="Türkçe" />
+                                </li>
+                            </ul>
+                        </li>
+
+                        <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
+                            <AnonymousTemplate>
+                                <li class="nav-item">
+                                    <a class="nav-link" runat="server" href="~/Account/Login.aspx">
+                                        <asp:Literal runat="server" Text="<%$ Resources: Resource, Login %>" />
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" runat="server" href="~/Account/Register.aspx">
+                                        <asp:Literal runat="server" Text="<%$ Resources: Resource, Register %>" />
+                                    </a>
+                                </li>
+                            </AnonymousTemplate>
+
+                            <LoggedInTemplate>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <asp:Literal runat="server" Text="<%$ Resources: Resource, HelloUser %>" /> <asp:Label ID="lblUserName" runat="server" />
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li>
+                                            <asp:LinkButton ID="lnkLogout" runat="server" CssClass="dropdown-item" OnClick="Logout_Click" Text="<%$ Resources: Resource, LogOff %>" />
+                                        </li>
+                                    </ul>
+                                </li>
+                            </LoggedInTemplate>
+                        </asp:LoginView>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="main-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+
+        <footer class="text-center py-3 mt-5 border-top">
+            <p class="mb-0">&copy; <%: DateTime.Now.Year %> RentACar</p>
+        </footer>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
