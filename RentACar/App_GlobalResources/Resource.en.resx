@@ -156,8 +156,20 @@
   <data name="EndDate_Label" xml:space="preserve">
     <value>End Date</value>
   </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>Error</value>
+  </data>
   <data name="HelloUser" xml:space="preserve">
     <value>Hello,</value>
+  </data>
+  <data name="InsertFailed" xml:space="preserve">
+    <value>Insert failed!</value>
+  </data>
+  <data name="InsertSuccess" xml:space="preserve">
+    <value>Record added successfully</value>
+  </data>
+  <data name="InvalidDateFormat" xml:space="preserve">
+    <value>Invalid date format</value>
   </data>
   <data name="InvalidLogin" xml:space="preserve">
     <value>Invalid Login</value>
@@ -224,6 +236,9 @@
   </data>
   <data name="SelectCarType" xml:space="preserve">
     <value>Select car type</value>
+  </data>
+  <data name="SelectPlaceholder" xml:space="preserve">
+    <value>Select</value>
   </data>
   <data name="StartDateRequired" xml:space="preserve">
     <value>Start Date Required</value>

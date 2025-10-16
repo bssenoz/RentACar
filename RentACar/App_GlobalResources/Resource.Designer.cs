@@ -178,11 +178,47 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hata.
+        /// </summary>
+        internal static string ErrorOccurred {
+            get {
+                return ResourceManager.GetString("ErrorOccurred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Merhaba,.
         /// </summary>
         internal static string HelloUser {
             get {
                 return ResourceManager.GetString("HelloUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kayıt eklenemedi!.
+        /// </summary>
+        internal static string InsertFailed {
+            get {
+                return ResourceManager.GetString("InsertFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kayıt başarıyla eklendi.
+        /// </summary>
+        internal static string InsertSuccess {
+            get {
+                return ResourceManager.GetString("InsertSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tarih formatı hatalı.
+        /// </summary>
+        internal static string InvalidDateFormat {
+            get {
+                return ResourceManager.GetString("InvalidDateFormat", resourceCulture);
             }
         }
         
@@ -381,6 +417,15 @@ namespace Resources {
         internal static string SelectCarType {
             get {
                 return ResourceManager.GetString("SelectCarType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seçiniz.
+        /// </summary>
+        internal static string SelectPlaceholder {
+            get {
+                return ResourceManager.GetString("SelectPlaceholder", resourceCulture);
             }
         }
         

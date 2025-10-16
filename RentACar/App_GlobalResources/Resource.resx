@@ -156,8 +156,20 @@
   <data name="EndDate_Label" xml:space="preserve">
     <value>Bitiş Tarihi</value>
   </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>Hata</value>
+  </data>
   <data name="HelloUser" xml:space="preserve">
     <value>Merhaba,</value>
+  </data>
+  <data name="InsertFailed" xml:space="preserve">
+    <value>Kayıt eklenemedi!</value>
+  </data>
+  <data name="InsertSuccess" xml:space="preserve">
+    <value>Kayıt başarıyla eklendi</value>
+  </data>
+  <data name="InvalidDateFormat" xml:space="preserve">
+    <value>Tarih formatı hatalı</value>
   </data>
   <data name="InvalidLogin" xml:space="preserve">
     <value>Giriş Yapılamadı!</value>
@@ -224,6 +236,9 @@
   </data>
   <data name="SelectCarType" xml:space="preserve">
     <value>Araç tipi seçiniz</value>
+  </data>
+  <data name="SelectPlaceholder" xml:space="preserve">
+    <value>Seçiniz</value>
   </data>
   <data name="StartDateRequired" xml:space="preserve">
     <value>Başlangıç Tarihi Gerekli</value>
