@@ -10,7 +10,7 @@ namespace RentACar
 {
     public partial class ReqCollection : Page
     {
-        private const string ResourceFile = "Resource"; // App_GlobalResources\Resource.resx
+        private const string ResourceFile = "Resource";
 
         private Dictionary<string, List<string>> carModels = new Dictionary<string, List<string>>()
         {
@@ -22,6 +22,28 @@ namespace RentACar
         {
             var obj = GetGlobalResourceObject(ResourceFile, key);
             return (obj != null) ? obj.ToString() : fallback ?? key;
+        }
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            CarType.AutoPostBack = true;
+
+            if (IsPostBack)
+            {
+                string postedCarType = Request.Form[CarType.UniqueID];
+                string selectedType = !string.IsNullOrEmpty(postedCarType) ? postedCarType : CarType.SelectedValue;
+
+                CarModel.Items.Clear();
+                CarModel.Items.Add(new System.Web.UI.WebControls.ListItem(Res("SelectCarModel", "-- Select --"), ""));
+
+                if (!string.IsNullOrEmpty(selectedType) && carModels.ContainsKey(selectedType))
+                {
+                    foreach (var model in carModels[selectedType])
+                    {
+                        CarModel.Items.Add(new System.Web.UI.WebControls.ListItem(model, model));
+                    }
+                }
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -54,7 +76,11 @@ namespace RentACar
         }
 
         protected void SaveButton_Click(object sender, EventArgs e)
+
         {
+            Page.Validate();
+            if (!Page.IsValid) return;
+
             try
             {
                 if (CarModel == null) return;
