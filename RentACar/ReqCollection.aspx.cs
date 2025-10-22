@@ -43,6 +43,13 @@ namespace RentACar
                         CarModel.Items.Add(new System.Web.UI.WebControls.ListItem(model, model));
                     }
                 }
+                foreach (System.Web.UI.WebControls.ListItem item in CarModel.Items)
+                {
+                    if (!string.IsNullOrEmpty(item.Value))
+                    {
+                        ClientScript.RegisterForEventValidation(CarModel.UniqueID, item.Value);
+                    }
+                }
             }
         }
 
@@ -53,7 +60,7 @@ namespace RentACar
                 Response.Redirect("~/Account/Login.aspx");
             }
 
-            if (!IsPostBack)
+            if (!Page.IsPostBack)
             {
                 CarModel.Items.Clear();
                 CarModel.Items.Add(new System.Web.UI.WebControls.ListItem(Res("SelectCarModel", "-- Select --"), ""));
@@ -71,6 +78,14 @@ namespace RentACar
                 foreach (var model in carModels[selectedType])
                 {
                     CarModel.Items.Add(new System.Web.UI.WebControls.ListItem(model, model));
+                }
+            }
+
+            foreach (System.Web.UI.WebControls.ListItem item in CarModel.Items)
+            {
+                if (!string.IsNullOrEmpty(item.Value))
+                {
+                    ClientScript.RegisterForEventValidation(CarModel.UniqueID, item.Value);
                 }
             }
         }

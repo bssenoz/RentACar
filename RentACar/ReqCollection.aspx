@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReqCollection.aspx.cs" Inherits="RentACar.ReqCollection" MasterPageFile="~/Site.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReqCollection.aspx.cs" Inherits="RentACar.ReqCollection" MasterPageFile="~/Site.Master" EnableEventValidation="false" %>
 <%@ Import Namespace="RentACar.Models" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceholderID="MainContent">
